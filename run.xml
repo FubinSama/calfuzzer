@@ -106,6 +106,7 @@
             <classpath>
                 <pathelement location="${javato.home.dir}/classes"/>
                 <pathelement location="${javato.home.dir}/lib/sootall-2.3.0.jar"/>
+            	<pathelement location="${javato.home.dir}/lib/petri-net.jar"/>
                 <path refid="javato_app_class_path"/>
             </classpath>
         </java>
@@ -160,6 +161,7 @@
                 <pathelement location="${javato.work.dir}/tmpclasses"/>
                 <pathelement path="${javato.app.class.path}"/>
                 <pathelement location="${javato.home.dir}/classes"/>
+            	<pathelement location="${javato.home.dir}/lib/petri-net.jar"/>
             </classpath>
         </java>
         <stopwatch name="timer" action="total"/>
@@ -513,7 +515,7 @@
         <antcall target="test_race11"/>
         <antcall target="test_sor"/>
         <antcall target="test_hedc"/>
-        <antcall target="test_cache4j"/>
+        <!--<antcall target="test_cache4j"/>-->
         <antcall target="test_list"/>
         <antcall target="test_array_list"/>
         <antcall target="test_set"/>
@@ -3039,4 +3041,18 @@
         </antcall>
     </target>
 
+	
+	<target name="testWait_1" description="wfb create to test wait">
+        <echo message="test wait and notify"/>
+        <property name="javato.work.dir" value="${benchdir}"/>
+        <property name="javato.app.main.class" value="wfb.testcases.TestWait1"/>
+        <antcall target="race-analysis"/>
+    </target>
+	
+	<target name="testW_1" description="wfb create to test wait">
+	        <echo message="test wait and notify"/>
+	        <property name="javato.work.dir" value="${benchdir}"/>
+	        <property name="javato.app.main.class" value="wfb.testcases.Test"/>
+	        <antcall target="race-analysis"/>
+	    </target>
 </project>

@@ -23,6 +23,7 @@
 package benchmarks.instrumented.java.util;
 
 import java.util.Enumeration;
+import java.util.ResourceBundle;
 
 /**
  * <code>ListResourceBundle</code> is an abstract subclass of

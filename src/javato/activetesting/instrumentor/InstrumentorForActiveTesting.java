@@ -1,5 +1,10 @@
 package javato.activetesting.instrumentor;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 import javato.activetesting.common.Parameters;
 import javato.instrumentor.RecursiveVisitor;
 import javato.instrumentor.TransformClass;
@@ -42,10 +47,15 @@ public class InstrumentorForActiveTesting {
         RecursiveVisitor vv = new RecursiveVisitor(null);
         VisitorForActiveTesting pv = new VisitorForActiveTesting(vv);
         vv.setNextVisitor(pv);
-        Visitor.setObserverClass("javato.activetesting.analysis.ObserverForActiveTesting");
+        Visitor.setObserverClass("javato.activetesting.analysis.ObserverForActiveTesting"); //for soot to load
         TransformClass processor = new TransformClass();
         processor.processAllAtOnce(args, pv);
         Visitor.dumpIidToLine();
+        try(ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(Parameters.waitLineNumberMapFile)))) {
+        	out.writeObject(vv.waits);
+        } catch(IOException e) {
+        	e.printStackTrace();
+        }
         pv.writeSymTblSize();
     }
 }

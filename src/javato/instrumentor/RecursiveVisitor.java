@@ -3,8 +3,10 @@ package javato.instrumentor;
 import javato.instrumentor.contexts.*;
 import soot.*;
 import soot.jimple.*;
+import soot.jimple.internal.JInvokeStmt;
 import soot.util.Chain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +42,8 @@ import java.util.List;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 public class RecursiveVisitor extends Visitor {
+	
+	public static List<Integer> waits = new ArrayList<>();
 
     public RecursiveVisitor(Visitor nextVisitor) {
         super(nextVisitor);
@@ -51,14 +55,20 @@ public class RecursiveVisitor extends Visitor {
     }
 
     public void visitMethodBegin(SootMethod sm, Chain units) {
-
+//    	System.out.println("wfb:visitMethodBegin" + sm + units);
     }
 
     public void visitMethodEnd(SootMethod sm, Chain units) {
-
+//    	System.out.println("wfb:visitMethodEnd" + sm + units);
     }
 
     public void visitStmt(SootMethod sm, Chain units, Stmt s) {
+//    	if(s.toString().equals("virtualinvoke $stack6.<java.lang.Object: void wait()>()"))
+//    		System.out.println("wfb:" + s.getTags());
+    	if(s.toString().contains("wait()")) {
+    		waits.add(s.getJavaSourceStartColumnNumber());
+    	}
+    	
         if (s instanceof AssignStmt) {
             nextVisitor.visitStmtAssign(sm, units, (AssignStmt) s);
         } else if (s instanceof IdentityStmt) {
@@ -174,6 +184,7 @@ public class RecursiveVisitor extends Visitor {
      */
 
     public void visitStmtInvoke(SootMethod sm, Chain units, InvokeStmt invokeStmt) {
+//    	System.out.println("wfb:visitStmtInvoke " + sm.getName());
         nextVisitor.visitInvokeExpr(sm, units, invokeStmt, invokeStmt.getInvokeExpr(), InvokeOnlyContextImpl.getInstance());
     }
 

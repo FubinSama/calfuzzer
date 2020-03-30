@@ -4,6 +4,7 @@ import javato.instrumentor.contexts.*;
 import javato.activetesting.common.Parameters;
 import soot.*;
 import soot.jimple.*;
+import soot.jimple.internal.JAssignStmt;
 import soot.tagkit.*;
 import soot.util.Chain;
 
@@ -202,6 +203,7 @@ public class Visitor {
      */
 
     public void visitStmtGoto(SootMethod sm, Chain units, GotoStmt gotoStmt) {
+    	
         nextVisitor.visitStmtGoto(sm, units, gotoStmt);
     }/*
      * IdentityStmt ::= Local@IdentityContext ThisRef@IdentityContext

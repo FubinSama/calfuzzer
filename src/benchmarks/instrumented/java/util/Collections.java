@@ -8,6 +8,7 @@
 package benchmarks.instrumented.java.util;
 import java.io.Serializable;
 import java.util.Enumeration;
+import java.util.Random;
 
 /**
  * This class consists exclusively of static methods that operate on or return

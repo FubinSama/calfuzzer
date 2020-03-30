@@ -146,7 +146,7 @@ public class TransformClass {
     public void processAllAtOnce(String[] args, Visitor visitor) {
         Scene.v().setSootClassPath(System.getProperty("sun.boot.class.path")
                 + File.pathSeparator + System.getProperty("java.class.path"));
-        Scene.v().loadClassAndSupport(Visitor.observerClass);
+        Scene.v().loadClassAndSupport(Visitor.observerClass); //load javato.observer.Observer
         TransformerForInstrumentation.v().setVisitor(visitor);
         PackManager.v().getPack("jtp").add(new Transform("jtp.instrumenter", TransformerForInstrumentation.v()));
         soot.Main.main(args);

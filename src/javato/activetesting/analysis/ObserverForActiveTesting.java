@@ -3,6 +3,8 @@ package javato.activetesting.analysis;
 import javato.activetesting.common.Parameters;
 import javato.activetesting.common.IIDAccessCounter;
 
+import java.io.File;
+import java.io.PrintStream;
 import java.util.LinkedList;
 
 /**
@@ -44,8 +46,17 @@ public class ObserverForActiveTesting extends Observer {
     //private static AtomicLong counter = new AtomicLong(0);
     //private static boolean stopRW = false;
     private static IIDAccessCounter counters = new IIDAccessCounter();
+    private static PrintStream ps;
 
     static {
+    	try {
+    		File file = new File(System.getProperty("javato.home.dir")
+    				+ File.separator + "tmp" + File.separator + "wfb.txt");
+    		ps = new PrintStream(file);
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
         System.out.println("Analysis class " + Parameters.analysisClass);
         if (Parameters.analysisClass != null) {
             try {
@@ -107,6 +118,8 @@ public class ObserverForActiveTesting extends Observer {
     }
 
     public static void myLockBefore(int iid, Object lock) {
+    	ps.println("iid:" + getIidToLine(iid));
+    	ps.println("wfb:" + iid + " lock" + "(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.lockBefore(iid, uniqueId(Thread.currentThread()), uniqueId(lock),lock);
     }
 
@@ -136,6 +149,7 @@ public class ObserverForActiveTesting extends Observer {
     }
 
     public static void myUnlockAfter(int iid, Object lock) {
+    	ps.println("wfb:" + iid + " unlock" + "(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.unlockAfter(iid, uniqueId(Thread.currentThread()), uniqueId(lock));
     }
 
@@ -148,6 +162,7 @@ public class ObserverForActiveTesting extends Observer {
     }
 
     public static void myStartBefore(int iid, Object t) {
+    	ps.println("wfb:" + iid + " fork(" + uniqueId(Thread.currentThread()) + "," + uniqueId(t) + ")");
         analysis.startBefore(iid, uniqueId(Thread.currentThread()), uniqueId(t));
     }
 
@@ -157,62 +172,75 @@ public class ObserverForActiveTesting extends Observer {
 
 
     public static void myWaitBefore(int iid, Object lock) {
+    	ps.println("wfb:" + iid + " wait(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.waitBefore(iid, uniqueId(Thread.currentThread()), uniqueId(lock));
     }
 
     public static void myWaitAfter(int iid, Object lock) {
+    	ps.println("wfb:" + iid + " waitAfter(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.waitAfter(iid, uniqueId(Thread.currentThread()), uniqueId(lock));
     }
 
     public static void myNotifyBefore(int iid, Object lock) {
+    	ps.println("wfb:" + iid + " notify(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.notifyBefore(iid, uniqueId(Thread.currentThread()), uniqueId(lock));
     }
 
     public static void myNotifyAllBefore(int iid, Object lock) {
+    	ps.println("wfb:" + iid + " notifyAll(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.notifyAllBefore(iid, uniqueId(Thread.currentThread()), uniqueId(lock));
     }
 
     public static void myJoinAfter(int iid, Object thread) {
+    	ps.println("wfb:" + iid + " join(" + uniqueId(Thread.currentThread()) + "," + uniqueId(thread) + ")");
         analysis.joinAfter(iid, uniqueId(Thread.currentThread()), uniqueId(thread));
     }
 
     public static void myReadBefore(int iid, Object o, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " read(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
         analysis.readBefore(iid, uniqueId(Thread.currentThread()), id(o, field), false);
     }
 
     public static void myReadBefore(int iid, int clss, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " read(" + uniqueId(Thread.currentThread()) + "," + idInt(clss, field) + ")");
         analysis.readBefore(iid, uniqueId(Thread.currentThread()), idInt(clss, field), false);
     }
 
     public static void myVReadBefore(int iid, Object o, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " vread(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
         analysis.readBefore(iid, uniqueId(Thread.currentThread()), id(o, field), true);
     }
 
     public static void myVReadBefore(int iid, int clss, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " vread(" + uniqueId(Thread.currentThread()) + "," + idInt(clss, field) + ")");
         analysis.readBefore(iid, uniqueId(Thread.currentThread()), idInt(clss, field), true);
     }
 
     public static void myWriteBefore(int iid, Object o, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " write(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
         analysis.writeBefore(iid, uniqueId(Thread.currentThread()), id(o, field), false);
     }
 
     public static void myWriteBefore(int iid, int clss, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " write(" + uniqueId(Thread.currentThread()) + "," + idInt(clss, field) + ")");
         analysis.writeBefore(iid, uniqueId(Thread.currentThread()), idInt(clss, field), false);
     }
 
     public static void myVWriteBefore(int iid, Object o, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " vwrite(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
         analysis.writeBefore(iid, uniqueId(Thread.currentThread()), id(o, field), true);
     }
 
     public static void myVWriteBefore(int iid, int clss, int field) {
         if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " vwrite(" + uniqueId(Thread.currentThread()) + "," + idInt(clss, field) + ")");
         analysis.writeBefore(iid, uniqueId(Thread.currentThread()), idInt(clss, field), true);
     }
 

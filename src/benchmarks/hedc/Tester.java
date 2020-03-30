@@ -95,7 +95,7 @@ public class Tester implements Runnable {
 	    } catch (Exception e) {
 		try {
 		    fw_.write("BROKEN: - exception=" + e + "\n");
-		} catch (Exception _) {}
+		} catch (Exception ex) {}
 	    } finally {
 		iterations_--;
 	    }

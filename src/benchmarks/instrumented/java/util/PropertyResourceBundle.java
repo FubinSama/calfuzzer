@@ -24,6 +24,7 @@ package benchmarks.instrumented.java.util;
 import java.io.InputStream;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.ResourceBundle;
 
 /**
  * <code>PropertyResourceBundle</code> is a concrete subclass of

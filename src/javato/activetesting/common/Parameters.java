@@ -65,6 +65,7 @@ public class Parameters {
 
     // various files for persistent data and logs
     public static final String iidToLineMapFile = "iidToLine.map";
+    public static final String waitLineNumberMapFile = "waits.map";
     public static final String usedObjectId = "javato.usedids";
     public static final String ERROR_STAT_FILE = System.getProperty("javato.activetesting.errorstat.file", "error.stat");
     public static final String ERROR_LOG_FILE = System.getProperty("javato.activetesting.errorlog.file", "error.log");
