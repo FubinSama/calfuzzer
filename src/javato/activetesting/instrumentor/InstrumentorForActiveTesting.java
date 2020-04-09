@@ -51,11 +51,12 @@ public class InstrumentorForActiveTesting {
         TransformClass processor = new TransformClass();
         processor.processAllAtOnce(args, pv);
         Visitor.dumpIidToLine();
-        try(ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(Parameters.waitLineNumberMapFile)))) {
-        	out.writeObject(vv.waits);
-        } catch(IOException e) {
-        	e.printStackTrace();
-        }
+        //TODO wfb想要将wait存入一个文件中
+//        try(ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(Parameters.waitLineNumberMapFile)))) {
+//        	out.writeObject(vv.waits);
+//        } catch(IOException e) {
+//        	e.printStackTrace();
+//        }
         pv.writeSymTblSize();
     }
 }

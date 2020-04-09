@@ -203,7 +203,6 @@ public class Visitor {
      */
 
     public void visitStmtGoto(SootMethod sm, Chain units, GotoStmt gotoStmt) {
-    	
         nextVisitor.visitStmtGoto(sm, units, gotoStmt);
     }/*
      * IdentityStmt ::= Local@IdentityContext ThisRef@IdentityContext

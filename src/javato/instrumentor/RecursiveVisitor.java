@@ -3,6 +3,7 @@ package javato.instrumentor;
 import javato.instrumentor.contexts.*;
 import soot.*;
 import soot.jimple.*;
+import soot.jimple.internal.JAssignStmt;
 import soot.jimple.internal.JInvokeStmt;
 import soot.util.Chain;
 
@@ -55,11 +56,9 @@ public class RecursiveVisitor extends Visitor {
     }
 
     public void visitMethodBegin(SootMethod sm, Chain units) {
-//    	System.out.println("wfb:visitMethodBegin" + sm + units);
     }
 
     public void visitMethodEnd(SootMethod sm, Chain units) {
-//    	System.out.println("wfb:visitMethodEnd" + sm + units);
     }
 
     public void visitStmt(SootMethod sm, Chain units, Stmt s) {
@@ -196,6 +195,7 @@ public class RecursiveVisitor extends Visitor {
      */
 
     public void visitStmtGoto(SootMethod sm, Chain units, GotoStmt gotoStmt) {
+//    	nextVisitor.visitStmtGoto(sm, units, gotoStmt);
         nextVisitor.visitLabel(sm, units, gotoStmt, gotoStmt.getTarget(), GotoContextImpl.getInstance());
     }/*
      * IdentityStmt ::= Local@IdentityContext ThisRef@IdentityContext
@@ -506,6 +506,6 @@ public class RecursiveVisitor extends Visitor {
      */
 
     public void visitLabel(SootMethod sm, Chain units, Stmt gotoStmt, Unit target, LabelContext context) {
-
+    	
     }
 }

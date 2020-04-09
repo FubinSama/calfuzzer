@@ -1,13 +1,20 @@
 package javato.activetesting.instrumentor;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import javato.instrumentor.UnknownASTNodeException;
 import javato.instrumentor.Visitor;
 import javato.instrumentor.contexts.*;
+import javato.instrumentor.contexts.Context;
 import javato.activetesting.common.Parameters;
 import soot.*;
 import soot.jimple.*;
+import soot.jimple.internal.JAssignStmt;
+import soot.jimple.internal.JEqExpr;
+import soot.jimple.internal.JInstanceFieldRef;
+import soot.jimple.internal.JVirtualInvokeExpr;
 import soot.util.Chain;
 
 /**
@@ -238,7 +245,6 @@ public class VisitorForActiveTesting extends Visitor {
     public void visitInstanceInvokeExpr(SootMethod sm, Chain units, Stmt s, InstanceInvokeExpr invokeExpr, InvokeContext context) {
         Value base = invokeExpr.getBase();
         String sig = invokeExpr.getMethod().getSubSignature();
-
         if (!Parameters.ignoreConcurrency) {
             if (sig.equals("void wait()")) {
                 addCallWithObject(units, s, "myWaitBefore", base, true);
@@ -446,5 +452,93 @@ public class VisitorForActiveTesting extends Visitor {
         nextVisitor.visitStaticFieldRef(sm, units, s, staticFieldRef, context);
     }
 
+    //TODO wfb想要创建一个visitStmtGoto，用来在inst阶段，加入while原语
+    public void visitStmtGoto(SootMethod sm, Chain units, GotoStmt gotoStmt) {
+    	/*
+    	 * 经过soot解析之后的一个while(...){ wait(); } 语句的Jimple结构如下：
+    	 * label01: goto label03;
+    	 * label02:
+    	 * 	void wait();
+    	 * label03: 
+    	 * 	$i0 = ?
+    	 * 	if $i0 == 1 goto label02;
+    	 * 	...
+    	 * 将其修改为:
+    	 * boolean flag = false;
+    	 * label01: goto label03;
+    	 * label02:
+    	 * 	flag = true;
+    	 * 	void wait();
+    	 * label03: 
+    	 * 	$i0 = ?
+    	 * 	if $i0 == 1 goto label02;
+    	 * 	if flag == true goto label04;
+			skip();
+    	 * label04:
+    	 * 	...
+    	 */
+    	//如果unit是JAssignStmt，说明可能是一个while(...) {}循环
+    	Unit label03 = gotoStmt.getTarget(); 
+    	if (label03 instanceof JAssignStmt) { //说明这可能是label01的goto语句
+    		Iterator iterator = units.iterator(label03);
+    		IfStmt ifStmt = null; //找到if $i0 == 1 goto label02;，进而找到label02
+    		while (iterator.hasNext()) {
+				Stmt stmt = (Stmt) iterator.next();
+				if(stmt instanceof IfStmt && stmt.getJavaSourceStartLineNumber() == gotoStmt.getJavaSourceStartLineNumber()) {
+					ifStmt = (IfStmt) stmt;
+					break;
+				}
+			}
+    		if(ifStmt == null) return; //未找到if语句，直接返回
+    		
+    		Unit label02 = ifStmt.getTarget();
+    		Stmt wait = null;
+    		Iterator iterator2 = units.iterator(label02);
+    		while (iterator2.hasNext()) { //查找wait语句
+    			Stmt stmt = (Stmt) iterator2.next();
+    			if (stmt == ifStmt) break;
+    			if (stmt.toString().contains("wait")) {
+    				wait = stmt;
+    				break;
+    			}
+    		}
+    		if(wait == null) return; //未找到wait语句，直接返回
+    		Stmt ite = wait;
+    		JAssignStmt jAssignStmt = null;
+    		if (wait instanceof InvokeStmt) {
+    			JVirtualInvokeExpr expr = (JVirtualInvokeExpr) ((InvokeStmt)wait).getInvokeExpr();
+    			Value base = expr.getBase();
+				while(true) {
+					ite = (Stmt) units.getPredOf(ite);
+					if(ite instanceof JAssignStmt && ite.toString().contains(base.toString())) {
+						jAssignStmt = (JAssignStmt)ite;
+						break;
+					}
+				}
+			}
+    		if(jAssignStmt == null) return; //未找到wait()方法的调用者，直接返回
+    		
+    		Local flag = Jimple.v().newLocal("flag", IntType.v());
+    		sm.getActiveBody().getLocals().add(flag);
+    		//在while前插入一个boolean flag = false;
+    		units.insertBefore(Jimple.v().newAssignStmt(flag, IntConstant.v(0)), gotoStmt);
+    		//如果while循环被执行，则置flag = true;
+    		units.insertAfter(Jimple.v().newAssignStmt(flag, IntConstant.v(1)), ifStmt.getTarget());
+    		
+    		Unit ifAfter = (Unit)units.getSuccOf(ifStmt);
+    		Stmt ifStmt2 = Jimple.v().newIfStmt(Jimple.v().newEqExpr(flag, IntConstant.v(1)), ifAfter);
+    		units.insertAfter(ifStmt2, ifStmt);
 
+    		Value right = jAssignStmt.getRightOp(); // a JInstanceFieldRef
+
+    		Local tmp = Jimple.v().newLocal("tmp", RefType.v("java.lang.Object")); //用来记录wait的lock
+    		sm.getActiveBody().getLocals().add(tmp);
+    		AssignStmt assign = Jimple.v().newAssignStmt(tmp, (Value)right.clone());
+    		units.insertBefore(assign, gotoStmt);
+
+    		addCallWithObject(units, ifStmt2, "skip", tmp, false);
+    	}
+    	nextVisitor.visitStmtGoto(sm, units, gotoStmt);
+    }
+    
 }

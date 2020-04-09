@@ -46,6 +46,7 @@ public class ObserverForActiveTesting extends Observer {
     //private static AtomicLong counter = new AtomicLong(0);
     //private static boolean stopRW = false;
     private static IIDAccessCounter counters = new IIDAccessCounter();
+    //TODO wfb创建了一个ps，用来将日志写入一个文件，做测试用
     private static PrintStream ps;
 
     static {
@@ -118,7 +119,6 @@ public class ObserverForActiveTesting extends Observer {
     }
 
     public static void myLockBefore(int iid, Object lock) {
-    	ps.println("iid:" + getIidToLine(iid));
     	ps.println("wfb:" + iid + " lock" + "(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
         analysis.lockBefore(iid, uniqueId(Thread.currentThread()), uniqueId(lock),lock);
     }
@@ -297,5 +297,28 @@ public class ObserverForActiveTesting extends Observer {
     /** Parameter 'invariant' must be serializable. */
     public static void assertDeterministic(Object invariant) {
         analysis.assertDeterministic(uniqueId(Thread.currentThread()), invariant);
+    }
+    
+    //TODO wfb创建了whileBefore和whileAfter原语，但好像只有before能用
+    /** wfb create it to test while*/
+    public static void whileBefore(int iid, Object o, int field) {
+        if (counters.needToIgnore(iid)) return;
+        ps.println("wfb:" + iid + " whileBefore(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
+//        analysis.whileBefore(iid, uniqueId(Thread.currentThread()), id(o, field), true);
+    }
+    
+    public static void whileAfter(int iid) {
+    	if (counters.needToIgnore(iid)) return;
+    	ps.println("wfb:" + iid + " whileAfter" + "(" + uniqueId(Thread.currentThread()) + ")");
+//    	analysis.whileAfter(iid, uniqueId(Thread.currentThread()), id(o, field), false);
+    }
+    
+    public static void whileAfter(int iid, Object o, int field) {
+    	if (counters.needToIgnore(iid)) return;
+    	ps.println("wfb:" + iid + " whileAfter(" + uniqueId(Thread.currentThread()) + "," + id(o, field) + ")");
+    }
+    public static void skip(int iid, Object lock) {
+    	if (counters.needToIgnore(iid)) return;
+    	ps.println("wfb:" + iid + " wait(" + uniqueId(Thread.currentThread()) + "," + uniqueId(lock) + ")");
     }
 }
