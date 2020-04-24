@@ -22,9 +22,9 @@ public class HybridAnalysis extends AnalysisImpl {
     private IgnoreRentrantLock ignoreRentrantLock;
     private HybridRaceTracker eb;
     
+    private Set<Integer> systemLock;
     private PetriNet net;
     private volatile boolean flag = false;
-    private Set<Integer> systemLock;
 
     public void initialize() {
         //ciTracker = new ContextIndexingTracker();
@@ -52,7 +52,6 @@ public class HybridAnalysis extends AnalysisImpl {
     public void lockBefore(Integer iid, Integer thread, Integer lock, Object actualLock) {
     	createRootPlace(thread);
         synchronized (ActiveChecker.lock) {
-//        	System.out.println("wfb:iid " + thread + "creat lock" + lock + ":" + actualLock.toString());
             if (ignoreRentrantLock.lockBefore(thread, lock)) {
 //                if (Parameters.trackLockRaces) {
 //                    LockSet ls = lsTracker.getLockSet(thread);
@@ -203,8 +202,16 @@ public class HybridAnalysis extends AnalysisImpl {
     public void finish() {
         synchronized (ActiveChecker.lock) {
             eb.dumpRaces();
-            System.out.println("程序分析结束");
-            net.htmlShowNet("/home/wfb/毕设/calfuzzer/html/petri.html");
+//            System.out.println("程序分析结束");
+            String serverPath = System.getProperty("javato.tomcat.dir");
+            if (serverPath == null) serverPath = System.getProperty("javato.home.dir") + "/";
+            String className = System.getProperty("className");
+            if (className == null) className = "petri5";
+            else className = className.replace(".", "_");
+            net.htmlShowNet(serverPath + "source/" + className + ".html");
+            net.generateMap();
+            net.generatePXML(serverPath + "source/" + className + ".xml");
+            net.copyToFile(serverPath + "source/" + className + ".obj");
         }
     }
 }

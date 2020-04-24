@@ -1,0 +1,51 @@
+public class wfb.testcases.TestWait1 extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        wfb.testcases.TestWait1 r0;
+
+        r0 := @this: wfb.testcases.TestWait1;
+
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.util.ArrayList $r0;
+        java.lang.Thread $r2, $r4;
+        wfb.testcases.Consumer $r3;
+        wfb.testcases.Producer $r5;
+        java.lang.String[] r6;
+
+        r6 := @parameter0: java.lang.String[];
+
+        $r0 = new java.util.ArrayList;
+
+        specialinvoke $r0.<java.util.ArrayList: void <init>()>();
+
+        $r2 = new java.lang.Thread;
+
+        $r3 = new wfb.testcases.Consumer;
+
+        specialinvoke $r3.<wfb.testcases.Consumer: void <init>(java.util.List)>($r0);
+
+        specialinvoke $r2.<java.lang.Thread: void <init>(java.lang.Runnable)>($r3);
+
+        virtualinvoke $r2.<java.lang.Thread: void start()>();
+
+        $r4 = new java.lang.Thread;
+
+        $r5 = new wfb.testcases.Producer;
+
+        specialinvoke $r5.<wfb.testcases.Producer: void <init>(java.util.List)>($r0);
+
+        specialinvoke $r4.<java.lang.Thread: void <init>(java.lang.Runnable)>($r5);
+
+        virtualinvoke $r4.<java.lang.Thread: void start()>();
+
+        return;
+    }
+}

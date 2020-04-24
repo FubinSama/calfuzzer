@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+    <title>PetriNet</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/tipsy.css" />
+    <script type="text/javascript" src="js/dagre-d3.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/tipsy.js"></script>
+<style>
+g.T7>circle {
+   fill: purple; 
+}
+
+g.T7>rect {
+   fill: purple; 
+}
+
+g.T8>circle {
+   fill: grey; 
+}
+
+g.T8>rect {
+   fill: grey; 
+}
+
+g.T9>circle {
+   fill: red; 
+}
+
+g.T9>rect {
+   fill: red; 
+}
+
+</style>
+</head>
+<body>
+<svg width=1200 height=600></svg>
+<script type="text/javascript">
+var g = new dagreD3.graphlib.Graph().setGraph({});
+g.setNode('P7_0',{label:'P7_0', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setNode('T0',{label:'write(7,4294967298)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#6', class:'T7'});
+g.setEdge('P7_0', 'T0', {});
+g.setNode('P7_1',{label:'P7_1', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T0', 'P7_1', {});
+g.setNode('T1',{label:'write(7,4294967299)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#7', class:'T7'});
+g.setEdge('P7_1', 'T1', {});
+g.setNode('P7_2',{label:'P7_2', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T1', 'P7_2', {});
+g.setNode('T2',{label:'write(7,4294967300)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#8', class:'T7'});
+g.setEdge('P7_2', 'T2', {});
+g.setNode('P7_3',{label:'P7_3', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T2', 'P7_3', {});
+g.setNode('T3',{label:'write(7,4294967299)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#10', class:'T7'});
+g.setEdge('P7_3', 'T3', {});
+g.setNode('P7_4',{label:'P7_4', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T3', 'P7_4', {});
+g.setNode('T4',{label:'start(7,8)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#30', class:'T7'});
+g.setEdge('P7_4', 'T4', {});
+g.setNode('P7_5',{label:'P7_5', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T4', 'P7_5', {});
+g.setNode('T5',{label:'start(7,9)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#31', class:'T7'});
+g.setEdge('P7_5', 'T5', {});
+g.setNode('P7_6',{label:'P7_6', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T5', 'P7_6', {});
+g.setNode('T16',{label:'join(7,8)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#32', class:'T7'});
+g.setEdge('P7_6', 'T16', {});
+g.setNode('P7_7',{label:'P7_7', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T16', 'P7_7', {});
+g.setNode('T17',{label:'join(7,9)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#33', class:'T7'});
+g.setEdge('P7_7', 'T17', {});
+g.setNode('P7_8',{label:'P7_8', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T17', 'P7_8', {});
+g.setNode('T18',{label:'read(7,21474836486)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#34', class:'T7'});
+g.setEdge('P7_8', 'T18', {});
+g.setNode('P7_9',{label:'P7_9', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T18', 'P7_9', {});
+g.setNode('T19',{label:'read(7,4294967298)', shape:'rect', description:'thread: 7, position: wfb/testcases/Test.java#34', class:'T7'});
+g.setEdge('P7_9', 'T19', {});
+g.setNode('P7_10',{label:'P7_10', shape:'circle', description:'this is a source place node, it belongs thread:7', class:'T7'});
+g.setEdge('T19', 'P7_10', {});
+g.setNode('P9_0',{label:'P9_0', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T5', 'P9_0', {});
+g.setNode('T8',{label:'read(9,4294967300)', shape:'rect', description:'thread: 9, position: wfb/testcases/Test.java#22', class:'T9'});
+g.setEdge('P9_0', 'T8', {});
+g.setNode('P9_1',{label:'P9_1', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T8', 'P9_1', {});
+g.setNode('T9',{label:'acq(9,10)', shape:'rect', description:'thread: 9, position: wfb/testcases/Test.java#22', class:'T9'});
+g.setEdge('P9_1', 'T9', {});
+g.setNode('P9_2',{label:'P9_2', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T9', 'P9_2', {});
+g.setNode('T11',{label:'read(9,4294967299)', shape:'rect', description:'thread: 9, position: wfb/testcases/Test.java#23', class:'T9'});
+g.setEdge('P9_2', 'T11', {});
+g.setNode('P9_3',{label:'P9_3', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T11', 'P9_3', {});
+g.setNode('T12',{label:'rel(9,10)', shape:'rect', description:'thread: 9, position: wfb/testcases/Test.java#22', class:'T9'});
+g.setEdge('P9_3', 'T12', {});
+g.setNode('P9_4',{label:'P9_4', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T12', 'P9_4', {});
+g.setNode('T14',{label:'write(9,4294967298)', shape:'rect', description:'thread: 9, position: wfb/testcases/Test.java#26', class:'T9'});
+g.setEdge('P9_4', 'T14', {});
+g.setNode('P9_5',{label:'P9_5', shape:'circle', description:'this is a source place node, it belongs thread:9', class:'T9'});
+g.setEdge('T14', 'P9_5', {});
+g.setEdge('P9_5', 'T17', {});
+g.setNode('Plock0',{label:'Plock0', shape:'circle', description:'this is a lock place node', class:'T0'});
+g.setEdge('T12', 'Plock0', {});
+g.setEdge('Plock0', 'T9', {});
+g.setNode('T10',{label:'acq(8,10)', shape:'rect', description:'thread: 8, position: wfb/testcases/Test.java#14', class:'T8'});
+g.setEdge('Plock0', 'T10', {});
+g.setNode('P8_3',{label:'P8_3', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T10', 'P8_3', {});
+g.setNode('T13',{label:'write(8,4294967299)', shape:'rect', description:'thread: 8, position: wfb/testcases/Test.java#15', class:'T8'});
+g.setEdge('P8_3', 'T13', {});
+g.setNode('P8_4',{label:'P8_4', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T13', 'P8_4', {});
+g.setNode('T15',{label:'rel(8,10)', shape:'rect', description:'thread: 8, position: wfb/testcases/Test.java#14', class:'T8'});
+g.setEdge('P8_4', 'T15', {});
+g.setNode('P8_5',{label:'P8_5', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T15', 'P8_5', {});
+g.setEdge('P8_5', 'T16', {});
+g.setEdge('T15', 'Plock0', {});
+g.setNode('P8_0',{label:'P8_0', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T4', 'P8_0', {});
+g.setNode('T6',{label:'write(8,4294967298)', shape:'rect', description:'thread: 8, position: wfb/testcases/Test.java#13', class:'T8'});
+g.setEdge('P8_0', 'T6', {});
+g.setNode('P8_1',{label:'P8_1', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T6', 'P8_1', {});
+g.setNode('T7',{label:'read(8,4294967300)', shape:'rect', description:'thread: 8, position: wfb/testcases/Test.java#14', class:'T8'});
+g.setEdge('P8_1', 'T7', {});
+g.setNode('P8_2',{label:'P8_2', shape:'circle', description:'this is a source place node, it belongs thread:8', class:'T8'});
+g.setEdge('T7', 'P8_2', {});
+g.setEdge('P8_2', 'T10', {});
+var render = new dagreD3.render();
+var svg = d3.select("svg"), inner = svg.append("g");
+var zoom = d3.zoom().on("zoom", function() {inner.attr("transform", d3.event.transform);});
+svg.call(zoom);
+var styleTooltip = function(name, description) {return "<p class='name'>" + name + "</p><p class='description'>" + description + "</p>";};
+render(inner, g);
+inner.selectAll("g.node")
+  .attr("title", function(v) { return styleTooltip(v, g.node(v).description) })
+  .each(function(v) { $(this).tipsy({ gravity: "w", opacity: 1, html: true }); });
+var initialScale = 0.75;
+svg.call(zoom.transform, d3.zoomIdentity.translate((svg.attr("width") - g.graph().width * initialScale) / 2, 20).scale(initialScale));
+</script>
+</body>
+</html>

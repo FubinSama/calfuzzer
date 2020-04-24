@@ -66,7 +66,7 @@ public class Test {
 			"benchmarks.testcases.TestDeadlock1"
 		};
 		InstrumentorForActiveTesting.main(args1);
-		System.setProperty("javato.activetesting.analysis.class", "javato.activetesting.IGoodlockAnalysis");
+		System.setProperty("javato.activetesting.analysis.class", "javato.activetesting.HybridAnalysis");
 		
 	}
 }
