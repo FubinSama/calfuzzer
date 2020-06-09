@@ -2,12 +2,12 @@
 <pnml>
     <net>
         <token id="Default" red="0" green="0" blue="0"/>
-        <place id="P7_0">
+        <place id="P3_0">
 <graphics>
 <position x="100" y="30" />
 </graphics>
 <name>
-<value>P7_0</value>
+<value>P3_0</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -27,7 +27,7 @@
 <position x="100" y="60" />
 </graphics>
 <name>
-<value>write(7,4294967298)</value>
+<value>write(3,4294967298)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -48,7 +48,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P7_0 to T0" source="P7_0" target="T0">
+<arc id="P3_0 to T0" source="P3_0" target="T0">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -57,12 +57,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P7_1">
+        <place id="P3_1">
 <graphics>
 <position x="100" y="90" />
 </graphics>
 <name>
-<value>P7_1</value>
+<value>P3_1</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -77,7 +77,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T0 to P7_1" source="T0" target="P7_1">
+<arc id="T0 to P3_1" source="T0" target="P3_1">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -91,7 +91,7 @@
 <position x="100" y="120" />
 </graphics>
 <name>
-<value>write(7,4294967299)</value>
+<value>start(3,4)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -112,7 +112,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P7_1 to T1" source="P7_1" target="T1">
+<arc id="P3_1 to T1" source="P3_1" target="T1">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -121,12 +121,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P7_2">
+        <place id="P3_2">
 <graphics>
 <position x="100" y="150" />
 </graphics>
 <name>
-<value>P7_2</value>
+<value>P3_2</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -141,7 +141,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T1 to P7_2" source="T1" target="P7_2">
+<arc id="T1 to P3_2" source="T1" target="P3_2">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -155,7 +155,7 @@
 <position x="100" y="180" />
 </graphics>
 <name>
-<value>write(7,4294967300)</value>
+<value>start(3,5)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -176,7 +176,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P7_2 to T2" source="P7_2" target="T2">
+<arc id="P3_2 to T2" source="P3_2" target="T2">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -185,12 +185,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P7_3">
+        <place id="P3_3">
 <graphics>
 <position x="100" y="210" />
 </graphics>
 <name>
-<value>P7_3</value>
+<value>P3_3</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -205,71 +205,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T2 to P7_3" source="T2" target="P7_3">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T3">
-<graphics>
-<position x="100" y="240" />
-</graphics>
-<name>
-<value>write(7,4294967299)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_3 to T3" source="P7_3" target="T3">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_4">
-<graphics>
-<position x="100" y="270" />
-</graphics>
-<name>
-<value>P7_4</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T3 to P7_4" source="T3" target="P7_4">
+<arc id="T2 to P3_3" source="T2" target="P3_3">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -280,10 +216,10 @@
 </arc>
 <transition id="T4">
 <graphics>
-<position x="100" y="300" />
+<position x="100" y="240" />
 </graphics>
 <name>
-<value>start(7,8)</value>
+<value>join(3,4)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -304,7 +240,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P7_4 to T4" source="P7_4" target="T4">
+<arc id="P3_3 to T4" source="P3_3" target="T4">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -313,12 +249,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P7_5">
+        <place id="P3_4">
 <graphics>
-<position x="100" y="330" />
+<position x="100" y="270" />
 </graphics>
 <name>
-<value>P7_5</value>
+<value>P3_4</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -333,962 +269,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T4 to P7_5" source="T4" target="P7_5">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T5">
-<graphics>
-<position x="100" y="360" />
-</graphics>
-<name>
-<value>start(7,9)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_5 to T5" source="P7_5" target="T5">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_6">
-<graphics>
-<position x="100" y="390" />
-</graphics>
-<name>
-<value>P7_6</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T5 to P7_6" source="T5" target="P7_6">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T16">
-<graphics>
-<position x="100" y="420" />
-</graphics>
-<name>
-<value>join(7,8)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_6 to T16" source="P7_6" target="T16">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_7">
-<graphics>
-<position x="100" y="450" />
-</graphics>
-<name>
-<value>P7_7</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T16 to P7_7" source="T16" target="P7_7">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T17">
-<graphics>
-<position x="100" y="480" />
-</graphics>
-<name>
-<value>join(7,9)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_7 to T17" source="P7_7" target="T17">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_8">
-<graphics>
-<position x="100" y="510" />
-</graphics>
-<name>
-<value>P7_8</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T17 to P7_8" source="T17" target="P7_8">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T18">
-<graphics>
-<position x="100" y="540" />
-</graphics>
-<name>
-<value>read(7,21474836486)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_8 to T18" source="P7_8" target="T18">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_9">
-<graphics>
-<position x="100" y="570" />
-</graphics>
-<name>
-<value>P7_9</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T18 to P7_9" source="T18" target="P7_9">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T19">
-<graphics>
-<position x="100" y="600" />
-</graphics>
-<name>
-<value>read(7,4294967298)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P7_9 to T19" source="P7_9" target="T19">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P7_10">
-<graphics>
-<position x="100" y="630" />
-</graphics>
-<name>
-<value>P7_10</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T19 to P7_10" source="T19" target="P7_10">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_0">
-<graphics>
-<position x="100" y="660" />
-</graphics>
-<name>
-<value>P9_0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T5 to P9_0" source="T5" target="P9_0">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T8">
-<graphics>
-<position x="100" y="690" />
-</graphics>
-<name>
-<value>read(9,4294967300)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P9_0 to T8" source="P9_0" target="T8">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_1">
-<graphics>
-<position x="100" y="720" />
-</graphics>
-<name>
-<value>P9_1</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T8 to P9_1" source="T8" target="P9_1">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T9">
-<graphics>
-<position x="100" y="750" />
-</graphics>
-<name>
-<value>acq(9,10)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P9_1 to T9" source="P9_1" target="T9">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_2">
-<graphics>
-<position x="100" y="780" />
-</graphics>
-<name>
-<value>P9_2</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T9 to P9_2" source="T9" target="P9_2">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T11">
-<graphics>
-<position x="100" y="810" />
-</graphics>
-<name>
-<value>read(9,4294967299)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P9_2 to T11" source="P9_2" target="T11">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_3">
-<graphics>
-<position x="100" y="840" />
-</graphics>
-<name>
-<value>P9_3</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T11 to P9_3" source="T11" target="P9_3">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T12">
-<graphics>
-<position x="100" y="870" />
-</graphics>
-<name>
-<value>rel(9,10)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P9_3 to T12" source="P9_3" target="T12">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_4">
-<graphics>
-<position x="100" y="900" />
-</graphics>
-<name>
-<value>P9_4</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T12 to P9_4" source="T12" target="P9_4">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T14">
-<graphics>
-<position x="100" y="930" />
-</graphics>
-<name>
-<value>write(9,4294967298)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P9_4 to T14" source="P9_4" target="T14">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P9_5">
-<graphics>
-<position x="100" y="960" />
-</graphics>
-<name>
-<value>P9_5</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T14 to P9_5" source="T14" target="P9_5">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<arc id="P9_5 to T17" source="P9_5" target="T17">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="Plock0">
-<graphics>
-<position x="100" y="990" />
-</graphics>
-<name>
-<value>Plock0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,1</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T12 to Plock0" source="T12" target="Plock0">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<arc id="Plock0 to T9" source="Plock0" target="T9">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T10">
-<graphics>
-<position x="100" y="1020" />
-</graphics>
-<name>
-<value>acq(8,10)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="Plock0 to T10" source="Plock0" target="T10">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P8_3">
-<graphics>
-<position x="100" y="1050" />
-</graphics>
-<name>
-<value>P8_3</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T10 to P8_3" source="T10" target="P8_3">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T13">
-<graphics>
-<position x="100" y="1080" />
-</graphics>
-<name>
-<value>write(8,4294967299)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P8_3 to T13" source="P8_3" target="T13">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P8_4">
-<graphics>
-<position x="100" y="1110" />
-</graphics>
-<name>
-<value>P8_4</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T13 to P8_4" source="T13" target="P8_4">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<transition id="T15">
-<graphics>
-<position x="100" y="1140" />
-</graphics>
-<name>
-<value>rel(8,10)</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<infiniteServer>
-<value>false</value>
-</infiniteServer>
-<timed>
-<value>false</value>
-</timed>
-<priority>
-<value>1</value>
-</priority>
-<orientation>
-<value>0</value>
-</orientation>
-<rate>
-<value>1.0</value>
-</rate>
-</transition>
-<arc id="P8_4 to T15" source="P8_4" target="T15">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P8_5">
-<graphics>
-<position x="100" y="1170" />
-</graphics>
-<name>
-<value>P8_5</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T15 to P8_5" source="T15" target="P8_5">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<arc id="P8_5 to T16" source="P8_5" target="T16">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-<arc id="T15 to Plock0" source="T15" target="Plock0">
-<arcpath id="000" x="0" y="0" curvePoint="false" />
-<arcpath id="001" x="0" y="0" curvePoint="false" />
-<type value="normal" />
-<inscription>
-<value>Default,1</value>
-<graphics />
-</inscription>
-</arc>
-        <place id="P8_0">
-<graphics>
-<position x="100" y="1200" />
-</graphics>
-<name>
-<value>P8_0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</name>
-<capacity>
-<value>1</value>
-</capacity>
-<initialMarking>
-<value>Default,0</value>
-<graphics>
-<offset x="0.0" y="0.0" />
-</graphics>
-</initialMarking>
-</place>
-<arc id="T4 to P8_0" source="T4" target="P8_0">
+<arc id="T4 to P3_4" source="T4" target="P3_4">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -1299,10 +280,10 @@
 </arc>
 <transition id="T6">
 <graphics>
-<position x="100" y="1230" />
+<position x="100" y="300" />
 </graphics>
 <name>
-<value>write(8,4294967298)</value>
+<value>join(3,5)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -1323,7 +304,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P8_0 to T6" source="P8_0" target="T6">
+<arc id="P3_4 to T6" source="P3_4" target="T6">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -1332,12 +313,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P8_1">
+        <place id="P3_5">
 <graphics>
-<position x="100" y="1260" />
+<position x="100" y="330" />
 </graphics>
 <name>
-<value>P8_1</value>
+<value>P3_5</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -1352,7 +333,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T6 to P8_1" source="T6" target="P8_1">
+<arc id="T6 to P3_5" source="T6" target="P3_5">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -1361,12 +342,41 @@
 <graphics />
 </inscription>
 </arc>
-<transition id="T7">
+        <place id="P5_0">
 <graphics>
-<position x="100" y="1290" />
+<position x="100" y="360" />
 </graphics>
 <name>
-<value>read(8,4294967300)</value>
+<value>P5_0</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</name>
+<capacity>
+<value>1</value>
+</capacity>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</initialMarking>
+</place>
+<arc id="T2 to P5_0" source="T2" target="P5_0">
+<arcpath id="000" x="0" y="0" curvePoint="false" />
+<arcpath id="001" x="0" y="0" curvePoint="false" />
+<type value="normal" />
+<inscription>
+<value>Default,1</value>
+<graphics />
+</inscription>
+</arc>
+<transition id="T5">
+<graphics>
+<position x="100" y="390" />
+</graphics>
+<name>
+<value>write(5,4294967298)</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -1387,7 +397,7 @@
 <value>1.0</value>
 </rate>
 </transition>
-<arc id="P8_1 to T7" source="P8_1" target="T7">
+<arc id="P5_0 to T5" source="P5_0" target="T5">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -1396,12 +406,12 @@
 <graphics />
 </inscription>
 </arc>
-        <place id="P8_2">
+        <place id="P5_1">
 <graphics>
-<position x="100" y="1320" />
+<position x="100" y="420" />
 </graphics>
 <name>
-<value>P8_2</value>
+<value>P5_1</value>
 <graphics>
 <offset x="0.0" y="0.0" />
 </graphics>
@@ -1416,7 +426,7 @@
 </graphics>
 </initialMarking>
 </place>
-<arc id="T7 to P8_2" source="T7" target="P8_2">
+<arc id="T5 to P5_1" source="T5" target="P5_1">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />
@@ -1425,7 +435,109 @@
 <graphics />
 </inscription>
 </arc>
-<arc id="P8_2 to T10" source="P8_2" target="T10">
+<arc id="P5_1 to T6" source="P5_1" target="T6">
+<arcpath id="000" x="0" y="0" curvePoint="false" />
+<arcpath id="001" x="0" y="0" curvePoint="false" />
+<type value="normal" />
+<inscription>
+<value>Default,1</value>
+<graphics />
+</inscription>
+</arc>
+        <place id="P4_0">
+<graphics>
+<position x="100" y="450" />
+</graphics>
+<name>
+<value>P4_0</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</name>
+<capacity>
+<value>1</value>
+</capacity>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</initialMarking>
+</place>
+<arc id="T1 to P4_0" source="T1" target="P4_0">
+<arcpath id="000" x="0" y="0" curvePoint="false" />
+<arcpath id="001" x="0" y="0" curvePoint="false" />
+<type value="normal" />
+<inscription>
+<value>Default,1</value>
+<graphics />
+</inscription>
+</arc>
+<transition id="T3">
+<graphics>
+<position x="100" y="480" />
+</graphics>
+<name>
+<value>write(4,4294967298)</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</name>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<timed>
+<value>false</value>
+</timed>
+<priority>
+<value>1</value>
+</priority>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+</transition>
+<arc id="P4_0 to T3" source="P4_0" target="T3">
+<arcpath id="000" x="0" y="0" curvePoint="false" />
+<arcpath id="001" x="0" y="0" curvePoint="false" />
+<type value="normal" />
+<inscription>
+<value>Default,1</value>
+<graphics />
+</inscription>
+</arc>
+        <place id="P4_1">
+<graphics>
+<position x="100" y="510" />
+</graphics>
+<name>
+<value>P4_1</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</name>
+<capacity>
+<value>1</value>
+</capacity>
+<initialMarking>
+<value>Default,0</value>
+<graphics>
+<offset x="0.0" y="0.0" />
+</graphics>
+</initialMarking>
+</place>
+<arc id="T3 to P4_1" source="T3" target="P4_1">
+<arcpath id="000" x="0" y="0" curvePoint="false" />
+<arcpath id="001" x="0" y="0" curvePoint="false" />
+<type value="normal" />
+<inscription>
+<value>Default,1</value>
+<graphics />
+</inscription>
+</arc>
+<arc id="P4_1 to T4" source="P4_1" target="T4">
 <arcpath id="000" x="0" y="0" curvePoint="false" />
 <arcpath id="001" x="0" y="0" curvePoint="false" />
 <type value="normal" />

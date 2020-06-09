@@ -195,25 +195,25 @@
         </antcall>
 -->
     </target>
-
-	<target name="testWait_1" description="wfb create to test wait">
+	
+	<target name="testWait" description="wfb create to test wait">
         <echo message="test wait and notify"/>
         <property name="javato.work.dir" value="${benchdir}"/>
         <property name="javato.app.main.class" value="wfb.testcases.TestWait1"/>
         <antcall target="race-analysis"/>
     </target>
 	
-	<target name="testW_1" description="wfb create to test wait">
+	<target name="testMy" description="wfb create to test DeadLock">
         <echo message="test wait and notify"/>
         <property name="javato.work.dir" value="${benchdir}"/>
-        <property name="javato.app.main.class" value="wfb.testcases.Test"/>
+        <property name="javato.app.main.class" value="MyTest"/>
         <antcall target="race-analysis"/>
     </target>
 	
-	<target name="testD" description="wfb create to test DeadLock">
+	<target name="testTest" description="wfb create to test DeadLock">
         <echo message="test wait and notify"/>
         <property name="javato.work.dir" value="${benchdir}"/>
-        <property name="javato.app.main.class" value="wfb.testcases.DeadLockDemo"/>
+        <property name="javato.app.main.class" value="wfb.testcases.Test"/>
         <antcall target="race-analysis"/>
     </target>
 	

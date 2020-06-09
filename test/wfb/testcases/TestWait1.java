@@ -12,63 +12,64 @@ public class TestWait1 {
 		new Thread(new Producer(cache)).start();
 	}
 	
-}
-class Consumer implements Runnable{
-	List<Integer> cache;
-	
-	public Consumer(List<Integer> cache) {
-		this.cache = cache;
-	}
-
-	@Override
-	public void run() {
-		for (int i=0; i<1; ++i) {
-			consume();
+	static class Consumer implements Runnable{
+		List<Integer> cache;
+		
+		public Consumer(List<Integer> cache) {
+			this.cache = cache;
 		}
-	}
 
-	private void consume() {
-		synchronized (cache) {
-			try {
-				while(cache.isEmpty()) {
-					cache.wait();
+		@Override
+		public void run() {
+			for (int i=0; i<1; ++i) {
+				consume();
+			}
+		}
+
+		private void consume() {
+			synchronized (cache) {
+				try {
+					while(cache.isEmpty()) {
+						cache.wait();
+					}
+					System.out.println("Consumer consumed [" + cache.remove(0) + "]");
+					cache.notify();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				System.out.println("Consumer consumed [" + cache.remove(0) + "]");
-				cache.notify();
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}
-}
-class Producer implements Runnable{
-	List<Integer> cache;
-	
-	public Producer(List<Integer> cache) {
-		this.cache = cache;
-	}
-
-	@Override
-	public void run() {
-		for (int i=0; i<1; ++i) {
-			produce();
+	static class Producer implements Runnable{
+		List<Integer> cache;
+		
+		public Producer(List<Integer> cache) {
+			this.cache = cache;
 		}
-	}
 
-	private void produce() {
-		synchronized (cache) {
-			try {
-				while(cache.size() == 1) {
-					cache.wait();
+		@Override
+		public void run() {
+			for (int i=0; i<1; ++i) {
+				produce();
+			}
+		}
+
+		private void produce() {
+			synchronized (cache) {
+				try {
+					while(cache.size() == 1) {
+						cache.wait();
+					}
+					
+					Thread.sleep(1000);
+					cache.add(new Random().nextInt());
+					
+					cache.notify();
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				
-				Thread.sleep(1000);
-				cache.add(new Random().nextInt());
-				
-				cache.notify();
-			} catch (Exception e) {
-				e.printStackTrace();
 			}
 		}
 	}
+	
 }

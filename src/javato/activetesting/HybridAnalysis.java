@@ -122,7 +122,7 @@ public class HybridAnalysis extends AnalysisImpl {
     }
 
     public void waitAfter(Integer iid, Integer thread, Integer lock) {
-    	net.connectNotifyWait(thread, lock);
+//    	net.connectNotifyWait(thread, lock);
 //        if (!Parameters.trackLockRaces) {
 //            synchronized (ActiveChecker.lock) {
 //                vcTracker.waitAfter(thread, lock);
